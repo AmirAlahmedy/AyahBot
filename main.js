@@ -200,7 +200,8 @@ nCallBack.permanentUrl = permenantUrl => { }
 nCallBack.onChatDetails = chat => { }
 
 dbCallBack = (inlineSearch, cb) =>{
-     let query = `SELECT * FROM ARABIC_TEXT  WHERE AYAH IN (SELECT AYAH FROM VERSES WHERE TEXT LIKE "%${inlineSearch.keywords}%") AND SURA IN (SELECT SURA FROM VERSES WHERE TEXT LIKE "%${inlineSearch.keywords}%") LIMIT 20;`;
+     let query = `select * from arabic_text where (ayah, sura) in
+     (select ayah, sura from verses where text like "%${inlineSearch.keywords}%")limit 30`;
 
      db.each(query, cb);
 }
@@ -216,11 +217,13 @@ nCallBack.onInlineSearh = inlineSearch => {
     console.log('inline search from id: ' + inlineSearch.from.id);
     console.log('inline search keywords: ' + inlineSearch.keywords);
 
+
     if(!inlineSearch.keywords.empty && inlineSearch.keywords.trim() != ""){
         let inlineSearchAnswer = new InlineSearchAnswer();
         
         let results = [];
         dbCallBack(inlineSearch, (err, row) =>{
+
             let result = new Result();
             result.title = `${Sura[row.sura][4]} (${row.ayah})`;
             result.caption = `${row.text}`;
@@ -228,7 +231,7 @@ nCallBack.onInlineSearh = inlineSearch => {
             result.width = 40;
             result.description = `${row.text}`;
             results.push(result);
-            
+            console.log(results, inlineSearch.keywords);
             inlineSearchAnswer.results = results;
             inlineSearchAnswer.next_offset = "";
             inlineSearchAnswer.chat = new Chat(inlineSearch.chat);
