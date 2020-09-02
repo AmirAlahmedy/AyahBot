@@ -201,11 +201,10 @@ nCallBack.onChatDetails = chat => { }
 
 dbCallBack = (inlineSearch, cb) =>{
      let query = `select * from arabic_text where (ayah, sura) in
-     (select ayah, sura from verses where text like "%${inlineSearch.keywords}%")limit 30`;
+     (select ayah, sura from verses where text like "%${inlineSearch.keywords}%")`;
 
      db.each(query, cb);
 }
-
 
 
 
@@ -221,9 +220,9 @@ nCallBack.onInlineSearh = inlineSearch => {
     if(!inlineSearch.keywords.empty && inlineSearch.keywords.trim() != ""){
         let inlineSearchAnswer = new InlineSearchAnswer();
         
-        let results = [];
+        let results = [], n = 0;
         dbCallBack(inlineSearch, (err, row) =>{
-
+            n++;
             let result = new Result();
             result.title = `${Sura[row.sura][4]} (${row.ayah})`;
             result.caption = `${row.text}`;
@@ -239,6 +238,12 @@ nCallBack.onInlineSearh = inlineSearch => {
             inlineSearchAnswer.to_user_id = inlineSearch.from.id;
             inlineSearchAnswer.search_id = inlineSearch.search_id;
             inlineSearch.thumb_url = './png/quran.svg';
+            if(n % 30 == 0){
+                if(!inlineSearch.offset)
+                    inlineSearchAnswer.next_offset = 1
+                else
+                    inlineSearchAnswer.next_offset = inlineSearch.offset + 1;
+            }
             api.send(JSON.stringify(inlineSearchAnswer));
             results = [];
         });
