@@ -240,6 +240,7 @@ nCallBack.onInlineSearh = inlineSearch => {
             inlineSearchAnswer.search_id = inlineSearch.search_id;
             inlineSearch.thumb_url = './png/quran.svg';
             api.send(JSON.stringify(inlineSearchAnswer));
+            results = [];
         });
        
     };
