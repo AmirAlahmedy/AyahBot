@@ -10,13 +10,14 @@ const Chat = require('nandbox-bot-api/src/data/Chat');
 
 const sqlite3 = require('sqlite3').verbose();
 
-const TOKEN = "90092081573258158:0:Jae3ygXQKjc86ADzAZHFqe8L4CrqhK";
+const TOKEN = "90092081573258158:0:bcjZZzBGxtXWDBd5UnVydwRNXXVsxd";
 const config = {
     URI: "wss://w1.nandbox.net:5020/nandbox/api/",
     DownloadServer: "https://w1.nandbox.net:5020/nandbox/download/",
     UploadServer: "https://w1.nandbox.net:5020/nandbox/upload/"
 }
 
+const botName = "@ayahbot_nb";
 
 var client = NandBoxClient.get(config);
 var nandbox = new NandBox();
@@ -228,7 +229,8 @@ nCallBack.onInlineSearh = inlineSearch => {
             result.caption = `${row.text}`;
             result.height = 10;
             result.width = 40;
-            result.description = `${row.text}`;
+			result.description = `${row.text}`;
+			result.caption += "\n"+result.title+"\nShared via "+botName;
             results.push(result);
             console.log(results, inlineSearch.keywords);
             inlineSearchAnswer.results = results;
