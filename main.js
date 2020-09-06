@@ -17,7 +17,7 @@ const config = {
     UploadServer: "https://w1.nandbox.net:5020/nandbox/upload/"
 }
 
-const botName = "@ayahbot_nb";
+const botName = "@qurany_nb";
 
 var client = NandBoxClient.get(config);
 var nandbox = new NandBox();
@@ -226,7 +226,7 @@ nCallBack.onInlineSearh = inlineSearch => {
             n++;
             let result = new Result();
             result.title = `${Sura[row.sura][4]} (${row.ayah})`;
-            result.caption = `${row.text}`;
+            result.caption = "﴿"+`${row.text}`+"﴾";
             result.height = 10;
             result.width = 40;
 			result.description = `${row.text}`;
