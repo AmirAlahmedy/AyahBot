@@ -1,0 +1,4 @@
+{"message":"Connected to the SQlite database","level":"info"}
+{"message":"Authenticated","level":"info"}
+{"method":"PONG","level":"info","message":"received object: "}
+{"method":"PONG","level":"info","message":"received object: "}

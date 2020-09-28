@@ -1,0 +1,14 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 5
+    },
+    "auditLog": "C:\\Users\\admin\\Desktop\\ayah-inline-bot\\.4a14a7a5dd9b9f95a177d3f49ad67d6b33d6cb4a-audit.json",
+    "files": [
+        {
+            "date": 1601295640109,
+            "name": "C:\\Users\\admin\\Desktop\\ayah-inline-bot\\info.log.2020-09-28",
+            "hash": "f0eef0461d4f11b61fea3933861340bf"
+        }
+    ]
+}

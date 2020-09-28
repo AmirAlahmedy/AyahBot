@@ -15,8 +15,11 @@
   "author": "Amir Salah Alahmedy",
   "license": "MIT",
   "dependencies": {
-    "nandbox-bot-api": "^1.2.4",
-    "sqlite3": "^5.0.0"
+    "nandbox-bot-api": "^1.2.9",
+    "path": "^0.12.7",
+    "sqlite3": "^5.0.0",
+    "winston": "^3.3.3",
+    "winston-daily-rotate-file": "^4.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",

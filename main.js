@@ -7,10 +7,26 @@ const Id = Utils.Id;
 const Result = require('nandbox-bot-api/src/data/Result');
 const InlineSearchAnswer = require('nandbox-bot-api/src/outmessages/InlineSearchAnswer');
 const Chat = require('nandbox-bot-api/src/data/Chat');
-
+const path = require("path");
+/*----------------------------------DB------------------------------------------*/
 const sqlite3 = require('sqlite3').verbose();
+/*------------------------------------------------------------------------------*/
+/*----------------------------logger--------------------------------------------*/
+const winston = require('winston')
+const error_file = path.join(__dirname, './error.log');
+const info_file = path.join(__dirname, './info.log');
+const DailyRotateFile = require('winston-daily-rotate-file');
+let  logger = winston.createLogger({
+	level: 'info',
+	transports: [
+		// new winston.transports.Console(),
+		new winston.transports.DailyRotateFile({filename:error_file, level:'error', maxSize: '5m', maxFiles: '5d'}),
+		new winston.transports.DailyRotateFile({filename:info_file,  maxSize: '5m', maxFiles: '5d'})
+	]
+});
+/*------------------------------------------------------------------------------*/
 
-const TOKEN = "90092081573258158:0:bcjZZzBGxtXWDBd5UnVydwRNXXVsxd";
+const TOKEN = "90091903321704167:0:UH6trZhM8FbmbigaV4NraBsBTrbJEP";
 const config = {
     URI: "wss://w1.nandbox.net:5020/nandbox/api/",
     DownloadServer: "https://w1.nandbox.net:5020/nandbox/download/",
@@ -27,9 +43,11 @@ var api = null;
 
 let db = new sqlite3.Database('./db/quran.ar.db', err => {
     if(err){
+		logger.error(err.message);
         return console.error(err.message);
     }
-    console.log('Connected to the SQlite database');
+	console.log('Connected to the SQlite database');
+	logger.info('Connected to the SQlite database')
 });
   
 let Sura = [
@@ -175,7 +193,8 @@ let Sura = [
 nCallBack.onConnect = (_api) => {
     // it will go here if the bot connected to the server successfully 
     api = _api;
-    console.log("Authenticated");
+	console.log("Authenticated");
+	logger.info("Authenticated");
 }
 
 
@@ -183,9 +202,18 @@ nCallBack.onConnect = (_api) => {
 nCallBack.onReceive = incomingMsg => { }
 
 // implement other nandbox.Callback() as per your bot need
-nCallBack.onReceiveObj = obj => console.log("received object: ", obj);
-nCallBack.onClose = () => console.log("ONCLOSE");
-nCallBack.onError = () => console.log("ONERROR");
+nCallBack.onReceiveObj = obj => {
+	console.log("received object: ", obj);
+	logger.info("received object: ", obj);
+}
+nCallBack.onClose = () => {
+	console.log("ONCLOSE");
+	logger.info("ONCLOSE");
+}
+nCallBack.onError = () =>{ 
+	console.log("ONERROR");
+	logger.info("ONERROR");
+}
 nCallBack.onChatMenuCallBack = chatMenuCallback => {}
 nCallBack.onInlineMessageCallback = inlineMsgCallback => { }
 nCallBack.onMessagAckCallback = msgAck => { }
@@ -217,6 +245,12 @@ nCallBack.onInlineSearh = inlineSearch => {
     console.log('inline search from id: ' + inlineSearch.from.id);
     console.log('inline search keywords: ' + inlineSearch.keywords);
 
+	logger.info('inline search id: ' + inlineSearch.search_id);
+    logger.info('inline search offset: ' + inlineSearch.offset);
+    logger.info('inline search chat id: '  + inlineSearch.chat.id);
+    logger.info('inline search from id: ' + inlineSearch.from.id);
+    logger.info('inline search keywords: ' + inlineSearch.keywords);
+
 
     if(!inlineSearch.keywords.empty && inlineSearch.keywords.trim() != ""){
         let inlineSearchAnswer = new InlineSearchAnswer();
@@ -233,6 +267,7 @@ nCallBack.onInlineSearh = inlineSearch => {
 			result.caption += "\n"+result.title+"\nShared via "+botName;
             results.push(result);
             console.log(results, inlineSearch.keywords);
+            logger.info(results, inlineSearch.keywords);
             inlineSearchAnswer.results = results;
             inlineSearchAnswer.next_offset = "";
             inlineSearchAnswer.chat = new Chat(inlineSearch.chat);
