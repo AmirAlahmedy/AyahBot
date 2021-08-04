@@ -1,0 +1,14 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 5
+    },
+    "auditLog": "C:\\Users\\ameer\\Desktop\\amirwork\\bots\\AyahBot\\.a78f57b1d71e229c0d6b67293ab8ce6b4c4b05e7-audit.json",
+    "files": [
+        {
+            "date": 1628063884761,
+            "name": "C:\\Users\\ameer\\Desktop\\amirwork\\bots\\AyahBot\\error.log.2021-08-04",
+            "hash": "a95059737c8e5f1b678d64574404fe32"
+        }
+    ]
+}
