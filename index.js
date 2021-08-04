@@ -1,2 +1,2 @@
 require('@babel/register');
-module.exports = require('./main.js')
+module.exports = require('./ayahbot-main.js')
