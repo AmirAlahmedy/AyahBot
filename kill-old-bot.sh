@@ -1,2 +1,2 @@
 #!/bin/bash
-pkill -9 -u nandbox -f ayahbot
+pkill -9 -u nandbox -f ayahbot &
