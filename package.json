@@ -17,6 +17,7 @@
   "dependencies": {
     "nandbox-bot-api": "^1.2.9",
     "path": "^0.12.7",
+    "path-posix": "^1.0.0",
     "sqlite3": "^5.0.0",
     "winston": "^3.3.3",
     "winston-daily-rotate-file": "^4.5.0"
