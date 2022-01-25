@@ -46,7 +46,7 @@ const config = {
 }
 
 // local dev configurations
-// const TOKEN = "90091783919738987:0:wop0OxDFhnC1iZL7YWjIeWux1yAa8I";
+// const TOKEN = "90091783919738987:0:d8OEltE0N59rnRfM5KvAdhCtg6qyAE";
 // const config = {
 //   URI: "wss://d1.nandbox.net:5020/nandbox/api/",
 //   DownloadServer: "https://d1.nandbox.net:5020/nandbox/download/",

@@ -6,24 +6,9 @@
     "auditLog": "C:\\Users\\ameer\\Desktop\\amirwork\\bots\\AyahBot\\.252b6eb143a0a1754b914785886c12d33efb3e56-audit.json",
     "files": [
         {
-            "date": 1632647276596,
-            "name": "C:\\Users\\ameer\\Desktop\\amirwork\\bots\\AyahBot\\info.log.2021-09-26",
-            "hash": "b3c395e1d6d54781c15e908791a43425"
-        },
-        {
-            "date": 1632663338215,
-            "name": "C:\\Users\\ameer\\Desktop\\amirwork\\bots\\AyahBot\\info.log.2021-09-26.1",
-            "hash": "c8d9a0ea69c0a63e6a22ff19e89e7f82"
-        },
-        {
-            "date": 1632664114239,
-            "name": "C:\\Users\\ameer\\Desktop\\amirwork\\bots\\AyahBot\\info.log.2021-09-26.2",
-            "hash": "3f976fb073b645ec9373b935ad709b10"
-        },
-        {
-            "date": 1632664443984,
-            "name": "C:\\Users\\ameer\\Desktop\\amirwork\\bots\\AyahBot\\info.log.2021-09-26.3",
-            "hash": "ac4baf93ad60fd7fbb46cea27c113bfa"
+            "date": 1643109254386,
+            "name": "C:\\Users\\ameer\\Desktop\\amirwork\\bots\\AyahBot\\info.log.2022-01-25",
+            "hash": "fd8ffff985d6cf20a8ec898add9947b0"
         }
     ]
 }

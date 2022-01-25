@@ -15,7 +15,7 @@
   "author": "Amir Salah Alahmedy",
   "license": "MIT",
   "dependencies": {
-    "nandbox-bot-api": "^1.2.9",
+    "nandbox-bot-api": "^1.2.31",
     "path": "^0.12.7",
     "path-posix": "^1.0.0",
     "sqlite3": "^5.0.0",
